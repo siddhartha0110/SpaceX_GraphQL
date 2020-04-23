@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import classNames from 'classnames';
 import Moment from "react-moment";
-
+import { Puff } from 'svg-loaders-react'
 const LAUNCH_QUERY = gql`
 query LaunchQuery($flight_number:Int!){
     launch(flight_number:$flight_number){
@@ -35,7 +35,7 @@ export class Launch extends Component {
                 <Query query={LAUNCH_QUERY} variables={{ flight_number }}>
                     {
                         ({ loading, error, data }) => {
-                            if (loading) return <h3>Loading...</h3>
+                            if (loading) return <Puff stroke="#98ff98" strokeOpacity=".125" />
                             if (error) console.log(error)
 
                             const { flight_number, mission_name, launch_year, launch_success, details, launch_date_local,

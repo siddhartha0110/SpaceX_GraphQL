@@ -3,7 +3,7 @@ import gql from 'graphql-tag'
 import { Query } from 'react-apollo';
 import LaunchItem from './LaunchItem';
 import MissionKey from './MissionKey';
-
+import { Puff } from 'svg-loaders-react'
 
 const LAUNCHES_QUERY = gql`
 query LaunchesQuery{
@@ -30,7 +30,7 @@ class Launches extends Component {
                 <Query query={LAUNCHES_QUERY}>
                     {
                         ({ loading, error, data }) => {
-                            if (loading) return <h4>LOADING...</h4>
+                            if (loading) return <Puff stroke="#98ff98" strokeOpacity=".125" />
                             if (error) console.log(error);
 
                             return <Fragment>
